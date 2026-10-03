@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Margin specimen</title>
+  <link rel="stylesheet" href="../src/margin.css">
+  <link rel="stylesheet" href="specimen.css">
+</head>
+<body>
+  <header class="sp-header">
+    <div class="sp-header__inner m-page">
+    <div class="sp-wordmark">
+      <strong>Margin</strong>
+      <span class="m-meta">Design kit 0.1, specimen</span>
+    </div>
+    <fieldset class="m-segmented" id="theme">
+      <legend class="m-visually-hidden">Theme</legend>
+      <label><input type="radio" name="theme" value="system" checked> System</label>
+      <label><input type="radio" name="theme" value="light"> Light</label>
+      <label><input type="radio" name="theme" value="dark"> Dark</label>
+    </fieldset>
+    </div>
+  </header>
+
+  <main>
+    <section class="sp-screen m-page" aria-labelledby="company">
+      <div class="sp-intro">
+        <div>
+          <h1 id="company">Northwind Industrial</h1>
+          <p class="m-secondary">Discounted cash flow valuation. Ticker <span class="m-code">NWIN</span>, figures in USD millions unless stated.</p>
+        </div>
+        <fieldset class="m-segmented">
+          <legend class="m-visually-hidden">Scenario</legend>
+          <label><input type="radio" name="scenario" value="bear"> Bear</label>
+          <label><input type="radio" name="scenario" value="base" checked> Base</label>
+          <label><input type="radio" name="scenario" value="bull"> Bull</label>
+        </fieldset>
+      </div>
+
+      <div class="sp-layout">
+        <form class="sp-assumptions" aria-labelledby="assumptions">
+          <h2 id="assumptions">Assumptions</h2>
+          <div class="m-field">
+            <label class="m-field__label" for="g1">Revenue growth, 2026E</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="g1" inputmode="decimal" value="7.0">
+              <span class="m-field__unit">%</span>
+            </div>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="g5">Revenue growth, 2030E</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="g5" inputmode="decimal" value="4.0">
+              <span class="m-field__unit">%</span>
+            </div>
+            <p class="m-field__hint">Growth steps down evenly between the two years.</p>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="margin">Operating margin, from 2028E</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="margin" inputmode="decimal" value="19.0">
+              <span class="m-field__unit">%</span>
+            </div>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="wacc">Discount rate (WACC)</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="wacc" inputmode="decimal" value="8.5">
+              <span class="m-field__unit">%</span>
+            </div>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="tg">Terminal growth</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="tg" inputmode="decimal" value="2.5">
+              <span class="m-field__unit">%</span>
+            </div>
+          </div>
+          <div class="m-notice m-notice--warning" role="status">
+            <p class="m-notice__title">Terminal value is 76.5% of enterprise value</p>
+            <p>Most of the estimate depends on years after 2030E. Check the sensitivity table before relying on it.</p>
+          </div>
+          <div class="sp-actions">
+            <button class="m-button" type="button">Save model</button>
+            <button class="m-button m-button--primary" type="submit">Run valuation</button>
+          </div>
+        </form>
+
+        <div class="sp-results">
+          <div class="m-figure">
+            <span class="m-figure__label">Estimated value per share</span>
+            <span class="m-figure__value m-num">$61.39</span>
+            <span class="m-figure__note">Last price $54.80, the estimate is <span class="m-num m-num--positive">+12.0%</span> above it. As of 3 October 2026. An estimate from the assumptions shown, not investment advice.</span>
+          </div>
+
+          <section class="sp-block" aria-labelledby="fcf-chart">
+            <h2 id="fcf-chart">Free cash flow rises from 580 to 830 by 2030E</h2>
+            <div class="sp-legend m-meta">
+              <span><i class="sp-legend__history"></i>Reported</span>
+              <span><i class="sp-legend__projected"></i>Projected</span>
+            </div>
+            <div class="sp-chart-scroll">
+            <svg class="sp-chart" viewBox="0 0 720 230" role="img" aria-label="Unlevered free cash flow by year, USD millions: 2023A 476, 2024A 528, 2025A 580, 2026E 640, 2027E 696, 2028E 750, 2029E 793, 2030E 830">
+            <line class="sp-chart__baseline" x1="0" x2="660" y1="200" y2="200" />
+            <text class="sp-chart__axis" x="672" y="204">0</text>
+            <line class="sp-chart__grid" x1="0" x2="660" y1="140" y2="140" />
+            <text class="sp-chart__axis" x="672" y="144">300</text>
+            <line class="sp-chart__grid" x1="0" x2="660" y1="80" y2="80" />
+            <text class="sp-chart__axis" x="672" y="84">600</text>
+            <line class="sp-chart__grid" x1="0" x2="660" y1="20" y2="20" />
+            <text class="sp-chart__axis" x="672" y="24">900</text>
+            <rect class="sp-chart__bar--history" x="19.2" y="104.8" width="44" height="95.2" />
+            <text class="sp-chart__value" x="41.2" y="98.8" text-anchor="middle">476</text>
+            <text class="sp-chart__axis" x="41.2" y="220" text-anchor="middle">2023A</text>
+            <rect class="sp-chart__bar--history" x="101.8" y="94.4" width="44" height="105.6" />
+            <text class="sp-chart__value" x="123.8" y="88.4" text-anchor="middle">528</text>
+            <text class="sp-chart__axis" x="123.8" y="220" text-anchor="middle">2024A</text>
+            <rect class="sp-chart__bar--history" x="184.2" y="84.0" width="44" height="116.0" />
+            <text class="sp-chart__value" x="206.2" y="78.0" text-anchor="middle">580</text>
+            <text class="sp-chart__axis" x="206.2" y="220" text-anchor="middle">2025A</text>
+            <rect class="sp-chart__bar--projected" x="266.8" y="72.0" width="44" height="128.0" />
+            <text class="sp-chart__value" x="288.8" y="66.0" text-anchor="middle">640</text>
+            <text class="sp-chart__axis" x="288.8" y="220" text-anchor="middle">2026E</text>
+            <rect class="sp-chart__bar--projected" x="349.2" y="60.7" width="44" height="139.3" />
+            <text class="sp-chart__value" x="371.2" y="54.7" text-anchor="middle">696</text>
+            <text class="sp-chart__axis" x="371.2" y="220" text-anchor="middle">2027E</text>
+            <rect class="sp-chart__bar--projected" x="431.8" y="50.1" width="44" height="149.9" />
+            <text class="sp-chart__value" x="453.8" y="44.1" text-anchor="middle">750</text>
+            <text class="sp-chart__axis" x="453.8" y="220" text-anchor="middle">2028E</text>
+            <rect class="sp-chart__bar--projected" x="514.2" y="41.5" width="44" height="158.5" />
+            <text class="sp-chart__value" x="536.2" y="35.5" text-anchor="middle">793</text>
+            <text class="sp-chart__axis" x="536.2" y="220" text-anchor="middle">2029E</text>
+            <rect class="sp-chart__bar--projected" x="596.8" y="34.0" width="44" height="166.0" />
+            <text class="sp-chart__value" x="618.8" y="28.0" text-anchor="middle">830</text>
+            <text class="sp-chart__axis" x="618.8" y="220" text-anchor="middle">2030E</text>
+            </svg>
+            </div>
+            <p class="m-meta">Unlevered free cash flow, USD millions. Source: company filings for 2023A to 2025A; projections from the assumptions on this page.</p>
+          </section>
+
+          <section class="sp-block" aria-labelledby="fcf-table">
+            <h2 id="fcf-table">Free cash flow build</h2>
+            <div class="m-table-scroll">
+              <table class="m-table">
+                <thead>
+          <tr>
+            <th scope="col">USD millions</th>
+            <th scope="col" class="m-table__num">2023A</th>
+            <th scope="col" class="m-table__num">2024A</th>
+            <th scope="col" class="m-table__num">2025A</th>
+            <th scope="col" class="m-table__num m-table__divide">2026E</th>
+            <th scope="col" class="m-table__num">2027E</th>
+            <th scope="col" class="m-table__num">2028E</th>
+            <th scope="col" class="m-table__num">2029E</th>
+            <th scope="col" class="m-table__num">2030E</th>
+          </tr>
+                </thead>
+                <tbody>
+          <tr>
+            <th scope="row">Revenue</th>
+            <td class="m-table__num">4,150.0</td>
+            <td class="m-table__num">4,470.0</td>
+            <td class="m-table__num">4,820.0</td>
+            <td class="m-table__num m-table__divide">5,157.4</td>
+            <td class="m-table__num">5,492.6</td>
+            <td class="m-table__num">5,822.2</td>
+            <td class="m-table__num">6,113.3</td>
+            <td class="m-table__num">6,357.8</td>
+          </tr>
+          <tr class="m-secondary">
+            <th scope="row" class="m-table__indent">Growth</th>
+            <td class="m-table__num">6.4%</td>
+            <td class="m-table__num">7.7%</td>
+            <td class="m-table__num">7.8%</td>
+            <td class="m-table__num m-table__divide">7.0%</td>
+            <td class="m-table__num">6.5%</td>
+            <td class="m-table__num">6.0%</td>
+            <td class="m-table__num">5.0%</td>
+            <td class="m-table__num">4.0%</td>
+          </tr>
+          <tr>
+            <th scope="row">Operating income (EBIT)</th>
+            <td class="m-table__num">713.8</td>
+            <td class="m-table__num">795.7</td>
+            <td class="m-table__num">872.4</td>
+            <td class="m-table__num m-table__divide">954.1</td>
+            <td class="m-table__num">1,032.6</td>
+            <td class="m-table__num">1,106.2</td>
+            <td class="m-table__num">1,161.5</td>
+            <td class="m-table__num">1,208.0</td>
+          </tr>
+          <tr class="m-secondary">
+            <th scope="row" class="m-table__indent">Operating margin</th>
+            <td class="m-table__num">17.2%</td>
+            <td class="m-table__num">17.8%</td>
+            <td class="m-table__num">18.1%</td>
+            <td class="m-table__num m-table__divide">18.5%</td>
+            <td class="m-table__num">18.8%</td>
+            <td class="m-table__num">19.0%</td>
+            <td class="m-table__num">19.0%</td>
+            <td class="m-table__num">19.0%</td>
+          </tr>
+          <tr>
+            <th scope="row" class="m-table__indent">Taxes on EBIT</th>
+            <td class="m-table__num">(171.3)</td>
+            <td class="m-table__num">(191.0)</td>
+            <td class="m-table__num">(209.4)</td>
+            <td class="m-table__num m-table__divide">(229.0)</td>
+            <td class="m-table__num">(247.8)</td>
+            <td class="m-table__num">(265.5)</td>
+            <td class="m-table__num">(278.8)</td>
+            <td class="m-table__num">(289.9)</td>
+          </tr>
+          <tr class="m-table__subtotal">
+            <th scope="row">NOPAT</th>
+            <td class="m-table__num">542.5</td>
+            <td class="m-table__num">604.7</td>
+            <td class="m-table__num">663.0</td>
+            <td class="m-table__num m-table__divide">725.1</td>
+            <td class="m-table__num">784.8</td>
+            <td class="m-table__num">840.7</td>
+            <td class="m-table__num">882.8</td>
+            <td class="m-table__num">918.1</td>
+          </tr>
+          <tr>
+            <th scope="row" class="m-table__indent">Depreciation and amortization</th>
+            <td class="m-table__num">166.0</td>
+            <td class="m-table__num">178.8</td>
+            <td class="m-table__num">192.8</td>
+            <td class="m-table__num m-table__divide">206.3</td>
+            <td class="m-table__num">219.7</td>
+            <td class="m-table__num">232.9</td>
+            <td class="m-table__num">244.5</td>
+            <td class="m-table__num">254.3</td>
+          </tr>
+          <tr>
+            <th scope="row" class="m-table__indent">Capital expenditure</th>
+            <td class="m-table__num">(207.5)</td>
+            <td class="m-table__num">(223.5)</td>
+            <td class="m-table__num">(241.0)</td>
+            <td class="m-table__num m-table__divide">(257.9)</td>
+            <td class="m-table__num">(274.6)</td>
+            <td class="m-table__num">(291.1)</td>
+            <td class="m-table__num">(305.7)</td>
+            <td class="m-table__num">(317.9)</td>
+          </tr>
+          <tr>
+            <th scope="row" class="m-table__indent">Change in working capital</th>
+            <td class="m-table__num">(25.0)</td>
+            <td class="m-table__num">(32.0)</td>
+            <td class="m-table__num">(35.0)</td>
+            <td class="m-table__num m-table__divide">(33.7)</td>
+            <td class="m-table__num">(33.5)</td>
+            <td class="m-table__num">(33.0)</td>
+            <td class="m-table__num">(29.1)</td>
+            <td class="m-table__num">(24.5)</td>
+          </tr>
+          <tr class="m-table__subtotal">
+            <th scope="row">Unlevered free cash flow</th>
+            <td class="m-table__num">476.0</td>
+            <td class="m-table__num">528.0</td>
+            <td class="m-table__num">579.8</td>
+            <td class="m-table__num m-table__divide">639.8</td>
+            <td class="m-table__num">696.3</td>
+            <td class="m-table__num">749.5</td>
+            <td class="m-table__num">792.5</td>
+            <td class="m-table__num">830.0</td>
+          </tr>
+          <tr class="m-secondary">
+            <th scope="row">Discount factor at 8.5%</th>
+            <td class="m-table__num"></td>
+            <td class="m-table__num"></td>
+            <td class="m-table__num"></td>
+            <td class="m-table__num m-table__divide">0.922</td>
+            <td class="m-table__num">0.849</td>
+            <td class="m-table__num">0.783</td>
+            <td class="m-table__num">0.722</td>
+            <td class="m-table__num">0.665</td>
+          </tr>
+          <tr>
+            <th scope="row">Present value</th>
+            <td class="m-table__num"></td>
+            <td class="m-table__num"></td>
+            <td class="m-table__num"></td>
+            <td class="m-table__num m-table__divide">589.7</td>
+            <td class="m-table__num">591.5</td>
+            <td class="m-table__num">586.8</td>
+            <td class="m-table__num">571.9</td>
+            <td class="m-table__num">552.0</td>
+          </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="sp-pair">
+            <section class="sp-block" aria-labelledby="bridge">
+              <h2 id="bridge">From enterprise to equity value</h2>
+              <table class="m-table">
+                <caption>USD millions</caption>
+                <tbody>
+          <tr>
+            <th scope="row">Sum of present values, 2026E to 2030E</th>
+            <td class="m-table__num">2,891.9</td>
+          </tr>
+          <tr>
+            <th scope="row">Present value of terminal value</th>
+            <td class="m-table__num">9,430.2</td>
+          </tr>
+          <tr class="m-table__subtotal">
+            <th scope="row">Enterprise value</th>
+            <td class="m-table__num">12,322.1</td>
+          </tr>
+          <tr>
+            <th scope="row">Net debt</th>
+            <td class="m-table__num">(1,150.0)</td>
+          </tr>
+          <tr class="m-table__subtotal">
+            <th scope="row">Equity value</th>
+            <td class="m-table__num">11,172.1</td>
+          </tr>
+                  <tr>
+                    <th scope="row">Shares outstanding, millions</th>
+                    <td class="m-table__num">182.0</td>
+                  </tr>
+                  <tr class="m-table__total">
+                    <th scope="row">Value per share, USD</th>
+                    <td class="m-table__num">61.39</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="sp-block" aria-labelledby="sensitivity">
+              <h2 id="sensitivity">Value per share by discount rate and terminal growth</h2>
+              <div class="m-table-scroll">
+                <table class="m-table m-table--grid">
+                  <caption>USD per share. Columns: terminal growth. Outlined: base case.</caption>
+                  <thead>
+          <tr>
+            <th scope="col">WACC</th>
+            <th scope="col" class="m-table__num">1.5%</th>
+            <th scope="col" class="m-table__num">2.0%</th>
+            <th scope="col" class="m-table__num">2.5%</th>
+            <th scope="col" class="m-table__num">3.0%</th>
+            <th scope="col" class="m-table__num">3.5%</th>
+          </tr>
+                  </thead>
+                  <tbody>
+          <tr>
+            <th scope="row">7.5%</th>
+            <td class="m-table__num">63.76</td>
+            <td class="m-table__num">68.93</td>
+            <td class="m-table__num">75.14</td>
+            <td class="m-table__num">82.73</td>
+            <td class="m-table__num">92.21</td>
+          </tr>
+          <tr>
+            <th scope="row">8.0%</th>
+            <td class="m-table__num">58.26</td>
+            <td class="m-table__num">62.56</td>
+            <td class="m-table__num">67.64</td>
+            <td class="m-table__num">73.73</td>
+            <td class="m-table__num">81.18</td>
+          </tr>
+          <tr>
+            <th scope="row">8.5%</th>
+            <td class="m-table__num">53.55</td>
+            <td class="m-table__num">57.17</td>
+            <td class="m-table__num m-table__base">61.39</td>
+            <td class="m-table__num">66.37</td>
+            <td class="m-table__num">72.35</td>
+          </tr>
+          <tr>
+            <th scope="row">9.0%</th>
+            <td class="m-table__num">49.47</td>
+            <td class="m-table__num">52.55</td>
+            <td class="m-table__num">56.10</td>
+            <td class="m-table__num">60.24</td>
+            <td class="m-table__num">65.14</td>
+          </tr>
+          <tr>
+            <th scope="row">9.5%</th>
+            <td class="m-table__num">45.90</td>
+            <td class="m-table__num">48.55</td>
+            <td class="m-table__num">51.57</td>
+            <td class="m-table__num">55.05</td>
+            <td class="m-table__num">59.12</td>
+          </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-reference" aria-labelledby="reference">
+     <div class="m-page">
+      <header>
+        <h2 id="reference" class="m-display-sm">Reference</h2>
+        <p class="m-lead m-prose">Tokens and components as they render in the current theme. The rules behind them are in DESIGN.md.</p>
+      </header>
+
+      <div class="sp-ref-section">
+        <h3>Type</h3>
+        <div>
+          <div class="sp-type-row"><span class="m-meta">display-lg, serif 400</span><span class="m-display-lg">Valuation 61.39</span></div>
+          <div class="sp-type-row"><span class="m-meta">display-md, serif 400</span><span class="m-display-md">Enterprise value 12,322.1</span></div>
+          <div class="sp-type-row"><span class="m-meta">display-sm, serif 400</span><span class="m-display-sm">Assumptions and sources</span></div>
+          <div class="sp-type-row"><span class="m-meta">text-2xl, h1, 600</span><h1>Northwind Industrial</h1></div>
+          <div class="sp-type-row"><span class="m-meta">text-xl, h2, 600</span><h2>Free cash flow build</h2></div>
+          <div class="sp-type-row"><span class="m-meta">text-lg, lead</span><p class="m-lead sp-sample-lg">Projections step down from 7.0% growth to 4.0% by 2030E.</p></div>
+          <div class="sp-type-row"><span class="m-meta">text-base, body</span><p class="sp-sample-base">Reading text sits at 16 on 24 and stays within 66 characters per line.</p></div>
+          <div class="sp-type-row"><span class="m-meta">text-md, app UI</span><p class="sp-sample-md">Controls, tables and labels use 14 on 20.</p></div>
+          <div class="sp-type-row"><span class="m-meta">text-sm, dense</span><p class="sp-sample-sm">Dense tables and secondary text use 13 on 18.</p></div>
+          <div class="sp-type-row"><span class="m-meta">text-xs, caption</span><p class="sp-sample-xs">Captions and axis labels use 12 on 16. Nothing is smaller.</p></div>
+          <div class="sp-type-row"><span class="m-meta">figures</span><p class="sp-sample-md m-num">1,234.5 &nbsp; (987.6) &nbsp; +4.2% &nbsp; &#8722;1.3% &nbsp; 0.922 &nbsp; ₺48.75 &nbsp; <span class="m-code">ISIN US0000000000</span></p></div>
+        </div>
+      </div>
+
+      <div class="sp-ref-section">
+        <h3>Color</h3>
+        <div class="sp-swatches" id="swatches">
+          <div class="sp-swatch-group">
+            <h4>Surfaces</h4>
+            <div class="sp-swatch" data-token="canvas"><i></i><span>canvas<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="surface-sunken"><i></i><span>surface-sunken<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="surface-raised"><i></i><span>surface-raised<small class="m-meta"></small></span></div>
+          </div>
+          <div class="sp-swatch-group">
+            <h4>Text</h4>
+            <div class="sp-swatch" data-token="text"><i></i><span>text<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="text-secondary"><i></i><span>text-secondary<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="text-tertiary"><i></i><span>text-tertiary<small class="m-meta"></small></span></div>
+          </div>
+          <div class="sp-swatch-group">
+            <h4>Lines</h4>
+            <div class="sp-swatch" data-token="border-subtle"><i></i><span>border-subtle<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="border"><i></i><span>border<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="border-control"><i></i><span>border-control<small class="m-meta"></small></span></div>
+          </div>
+          <div class="sp-swatch-group">
+            <h4>Action and meaning</h4>
+            <div class="sp-swatch" data-token="accent"><i></i><span>accent<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="positive"><i></i><span>positive<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="negative"><i></i><span>negative<small class="m-meta"></small></span></div>
+            <div class="sp-swatch" data-token="warning"><i></i><span>warning<small class="m-meta"></small></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-ref-section">
+        <h3>Buttons</h3>
+        <div class="sp-row">
+          <button class="m-button m-button--primary" type="button">Run valuation</button>
+          <button class="m-button" type="button">Save model</button>
+          <button class="m-button m-button--quiet" type="button">Reset assumptions</button>
+          <button class="m-button m-button--danger" type="button">Delete model</button>
+          <button class="m-button" type="button" disabled>Export to Excel</button>
+        </div>
+        <div class="sp-row">
+          <button class="m-button m-button--sm" type="button">Add year</button>
+          <button class="m-button" type="button">Add year</button>
+          <button class="m-button m-button--lg" type="button">Add year</button>
+        </div>
+      </div>
+
+      <div class="sp-ref-section">
+        <h3>Fields</h3>
+        <div class="sp-fields">
+          <div class="m-field">
+            <label class="m-field__label" for="ref-name">Model name</label>
+            <input class="m-input" id="ref-name" value="Base case">
+            <p class="m-field__hint">Shown in your list of saved models.</p>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="ref-tg">Terminal growth</label>
+            <div class="m-field__control">
+              <input class="m-input m-input--number" id="ref-tg" inputmode="decimal" value="9.0" aria-invalid="true" aria-describedby="ref-tg-error">
+              <span class="m-field__unit">%</span>
+            </div>
+            <p class="m-field__error" id="ref-tg-error">Must be lower than the discount rate (8.5%).</p>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="ref-currency">Reporting currency</label>
+            <div class="m-select">
+              <select id="ref-currency">
+                <option>USD, US dollar</option>
+                <option>EUR, euro</option>
+                <option>TRY, Turkish lira</option>
+              </select>
+            </div>
+          </div>
+          <div class="m-field">
+            <label class="m-field__label" for="ref-disabled">Shares outstanding</label>
+            <input class="m-input m-input--number" id="ref-disabled" value="182.0" disabled>
+            <p class="m-field__hint">Imported from the latest filing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-ref-section">
+        <h3>Notices</h3>
+        <div class="sp-notices">
+          <div class="m-notice" role="status">
+            <p class="m-notice__title">Figures last updated 3 October 2026</p>
+            <p>Reported values come from the 2025 annual report.</p>
+          </div>
+          <div class="m-notice m-notice--warning" role="status">
+            <p class="m-notice__title">Terminal value is 76.5% of enterprise value</p>
+            <p>Most of the estimate depends on years after 2030E.</p>
+          </div>
+          <div class="m-notice m-notice--error" role="alert">
+            <p class="m-notice__title">The model could not be saved</p>
+            <p>The connection was lost. Your changes are kept on this page; try again in a moment.</p>
+          </div>
+        </div>
+      </div>
+     </div>
+    </section>
+  </main>
+
+  <footer class="sp-footer">
+    <p class="m-meta m-page">Margin 0.1. Typefaces: IBM Plex Sans and IBM Plex Serif, SIL Open Font License. Northwind Industrial and all figures on this page are fictional.</p>
+  </footer>
+
+  <script>
+    // Theme: follow the system unless the reader picks one. Stored per browser.
+    const root = document.documentElement;
+    const themeInputs = document.querySelectorAll('input[name="theme"]');
+
+    function applyTheme(value) {
+      if (value === "light" || value === "dark") {
+        root.dataset.theme = value;
+      } else {
+        delete root.dataset.theme;
+      }
+      renderSwatches();
+    }
+
+    let saved = "system";
+    try {
+      saved = localStorage.getItem("margin-theme") || "system";
+    } catch {}
+    themeInputs.forEach((input) => {
+      input.checked = input.value === saved;
+      input.addEventListener("change", () => {
+        try {
+          localStorage.setItem("margin-theme", input.value);
+        } catch {}
+        applyTheme(input.value);
+      });
+    });
+
+    // Swatches read their resolved color from the token, so they always match the theme.
+    function toHex(rgb) {
+      const parts = rgb.match(/[\d.]+/g).slice(0, 3).map(Number);
+      return "#" + parts.map((n) => Math.round(n).toString(16).padStart(2, "0")).join("");
+    }
+
+    function renderSwatches() {
+      document.querySelectorAll(".sp-swatch").forEach((swatch) => {
+        const chip = swatch.querySelector("i");
+        chip.style.backgroundColor = `var(--m-color-${swatch.dataset.token})`;
+        swatch.querySelector("small").textContent = toHex(getComputedStyle(chip).backgroundColor);
+      });
+    }
+
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", renderSwatches);
+    applyTheme(saved);
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+/*
+ * Margin: the whole kit in one import.
+ *
+ * Styles live in cascade layers, so any unlayered style in a consuming
+ * project wins without specificity fights or !important.
+ */
+
+@layer margin.tokens, margin.base, margin.components;
+
+@import url("./fonts.css");
+@import url("./tokens.css");
+@import url("./base.css");
+@import url("./components/button.css");
+@import url("./components/field.css");
+@import url("./components/table.css");
+@import url("./components/notice.css");
+@import url("./components/segmented.css");

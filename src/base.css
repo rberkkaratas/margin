@@ -1,0 +1,247 @@
+/*
+ * Base: a small reset, element defaults, typography roles, number utilities
+ * and two layout primitives.
+ */
+
+@layer margin.base {
+  /* ── Reset ─────────────────────────────────────────────────────────── */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--m-color-canvas);
+    color: var(--m-color-text);
+    font-family: var(--m-font-sans);
+    font-size: var(--m-text-base);
+    font-weight: var(--m-weight-regular);
+    line-height: var(--m-leading-base);
+    font-kerning: normal;
+    /* Plex figures are tabular and lining by default; this keeps fallback fonts in line. */
+    font-variant-numeric: lining-nums tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+
+  /* ── Element defaults ──────────────────────────────────────────────── */
+  h1 {
+    font-size: var(--m-text-2xl);
+    line-height: var(--m-leading-2xl);
+    letter-spacing: var(--m-tracking-2xl);
+    font-weight: var(--m-weight-semibold);
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-size: var(--m-text-xl);
+    line-height: var(--m-leading-xl);
+    letter-spacing: var(--m-tracking-xl);
+    font-weight: var(--m-weight-semibold);
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-size: var(--m-text-base);
+    line-height: var(--m-leading-base);
+    font-weight: var(--m-weight-semibold);
+  }
+
+  h4 {
+    font-size: var(--m-text-md);
+    line-height: var(--m-leading-md);
+    font-weight: var(--m-weight-semibold);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  strong,
+  b {
+    font-weight: var(--m-weight-semibold);
+  }
+
+  small {
+    font-size: var(--m-text-sm);
+    line-height: var(--m-leading-sm);
+  }
+
+  a {
+    color: var(--m-color-accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--m-border-width);
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
+    transition: text-decoration-color var(--m-duration-fast) var(--m-ease-standard);
+  }
+
+  a:hover {
+    text-decoration-color: currentcolor;
+  }
+
+  hr {
+    border: 0;
+    border-top: var(--m-border-width) solid var(--m-color-border);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--m-color-focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--m-color-accent) 22%, transparent);
+  }
+
+  /* ── Typography roles ──────────────────────────────────────────────── */
+
+  /* Serif display: weight 400 only, at most one per screen. */
+  .m-display-lg,
+  .m-display-md,
+  .m-display-sm {
+    font-family: var(--m-font-serif);
+    font-weight: var(--m-weight-regular);
+    text-wrap: balance;
+  }
+
+  .m-display-lg {
+    font-size: var(--m-display-lg);
+    line-height: var(--m-display-lg-leading);
+    letter-spacing: var(--m-display-lg-tracking);
+  }
+
+  .m-display-md {
+    font-size: var(--m-display-md);
+    line-height: var(--m-display-md-leading);
+    letter-spacing: var(--m-display-md-tracking);
+  }
+
+  .m-display-sm {
+    font-size: var(--m-display-sm);
+    line-height: var(--m-display-sm-leading);
+    letter-spacing: var(--m-display-sm-tracking);
+  }
+
+  .m-lead {
+    font-size: var(--m-text-lg);
+    line-height: var(--m-leading-lg);
+    color: var(--m-color-text-secondary);
+  }
+
+  .m-secondary {
+    color: var(--m-color-text-secondary);
+  }
+
+  .m-meta {
+    font-size: var(--m-text-xs);
+    line-height: var(--m-leading-xs);
+    color: var(--m-color-text-tertiary);
+  }
+
+  /* A headline figure (e.g. value per share): label above, number below. */
+  .m-figure {
+    display: grid;
+    gap: var(--m-space-1);
+  }
+
+  .m-figure__label {
+    font-size: var(--m-text-md);
+    line-height: var(--m-leading-md);
+    color: var(--m-color-text-secondary);
+  }
+
+  .m-figure__value {
+    font-family: var(--m-font-serif);
+    font-size: var(--m-display-md);
+    line-height: var(--m-display-md-leading);
+    letter-spacing: var(--m-display-md-tracking);
+    font-weight: var(--m-weight-regular);
+  }
+
+  .m-figure__note {
+    font-size: var(--m-text-sm);
+    line-height: var(--m-leading-sm);
+    color: var(--m-color-text-tertiary);
+  }
+
+  /* ── Numbers ───────────────────────────────────────────────────────── */
+  .m-num {
+    font-variant-numeric: lining-nums tabular-nums;
+    white-space: nowrap;
+  }
+
+  .m-num--positive {
+    color: var(--m-color-positive);
+  }
+
+  .m-num--negative {
+    color: var(--m-color-negative);
+  }
+
+  /* A user-entered assumption shown as text (financial-model convention). */
+  .m-num--input {
+    color: var(--m-color-accent);
+  }
+
+  /* Identifiers, tickers, codes: slashed zero so 0 and O never collide. */
+  .m-code {
+    font-variant-numeric: lining-nums tabular-nums slashed-zero;
+  }
+
+  /* ── Layout primitives ─────────────────────────────────────────────── */
+  .m-page {
+    width: 100%;
+    max-width: var(--m-width-page);
+    margin-inline: auto;
+    padding-inline: var(--m-gutter);
+  }
+
+  .m-prose {
+    max-width: var(--m-measure);
+  }
+
+  .m-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

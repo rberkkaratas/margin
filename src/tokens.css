@@ -1,0 +1,179 @@
+/*
+ * Margin design tokens.
+ *
+ * This is the only file in the kit (and in any consuming project) where raw
+ * color values, font stacks and pixel sizes may appear. Everything else
+ * references these custom properties; stylelint enforces it.
+ *
+ * Every color is defined for both themes with light-dark(). The theme
+ * follows the operating system unless <html data-theme="light|dark"> pins it.
+ * Contrast targets are checked by `npm run check:contrast`.
+ */
+
+@layer margin.tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* ── Color: surfaces ─────────────────────────────────────────────── */
+    --m-color-canvas: light-dark(#ffffff, #0b0f16);       /* page background */
+    --m-color-surface: light-dark(#ffffff, #121822);      /* panels on the canvas */
+    --m-color-surface-sunken: light-dark(#f4f6f9, #121822); /* grouped areas, table headers */
+    --m-color-surface-raised: light-dark(#ffffff, #171e2a); /* menus, dialogs, popovers */
+
+    /* ── Color: text (navy ink, never pure black) ────────────────────── */
+    --m-color-text: light-dark(#0a1526, #edf0f5);           /* primary, >= 7:1 */
+    --m-color-text-secondary: light-dark(#465165, #b3bccb); /* supporting, >= 7:1 */
+    --m-color-text-tertiary: light-dark(#5f6a7d, #8f99ab);  /* meta only, >= 4.5:1 */
+    --m-color-text-disabled: light-dark(#a2a9b6, #5a6476);  /* disabled controls only */
+    --m-color-text-on-accent: light-dark(#ffffff, #ffffff);
+
+    /* ── Color: lines ────────────────────────────────────────────────── */
+    --m-color-border-subtle: light-dark(#e8ebf0, #1e2531); /* row dividers */
+    --m-color-border: light-dark(#d6dbe3, #283141);        /* hairlines, panel edges */
+    --m-color-border-strong: light-dark(#b4bccb, #3a4558); /* totals rule, emphasis */
+    --m-color-border-control: light-dark(#7a8597, #6b7790); /* input outlines, >= 3:1 */
+
+    /* ── Color: the single accent (actions, links, editable values) ──── */
+    --m-color-accent: light-dark(#0b50d0, #6aa1ff);        /* link and editable-value text */
+    --m-color-accent-fill: light-dark(#0b50d0, #2563e0);   /* primary button background */
+    --m-color-accent-fill-hover: light-dark(#0942ad, #1d55c7);
+    --m-color-accent-tint: color-mix(in srgb, var(--m-color-accent) 9%, transparent);
+    --m-color-focus: light-dark(#0b50d0, #6aa1ff);
+
+    /* ── Color: meaning (never decoration) ───────────────────────────── */
+    --m-color-positive: light-dark(#047a3c, #3fcf7a);  /* gains only */
+    --m-color-negative: light-dark(#c8102e, #ff6b6b);  /* losses and destructive actions */
+    --m-color-warning: light-dark(#8a5300, #f0b44c);   /* caution notices */
+    --m-color-negative-tint: color-mix(in srgb, var(--m-color-negative) 8%, transparent);
+    --m-color-warning-tint: color-mix(in srgb, var(--m-color-warning) 10%, transparent);
+
+    /* ── Color: charts ───────────────────────────────────────────────── */
+    --m-color-chart-primary: light-dark(#0a1526, #c9d1de);  /* the main series */
+    --m-color-chart-secondary: light-dark(#848e9f, #5d687c); /* comparison, history */
+    --m-color-chart-highlight: var(--m-color-accent);        /* one emphasized point or series */
+    --m-color-chart-grid: var(--m-color-border-subtle);
+    --m-color-chart-axis: var(--m-color-text-tertiary);
+
+    /* ── Typography ──────────────────────────────────────────────────── */
+    --m-font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --m-font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+    --m-weight-regular: 400;
+    --m-weight-medium: 500;
+    --m-weight-semibold: 600;
+
+    /* UI and reading sizes (sans). Size / line height / tracking go together. */
+    --m-text-xs: 0.75rem;     /* 12px: captions, axis labels. Never smaller. */
+    --m-leading-xs: 1rem;
+    --m-text-sm: 0.8125rem;   /* 13px: dense tables, secondary UI */
+    --m-leading-sm: 1.125rem;
+    --m-text-md: 0.875rem;    /* 14px: default app UI, controls, tables */
+    --m-leading-md: 1.25rem;
+    --m-text-base: 1rem;      /* 16px: reading text */
+    --m-leading-base: 1.5rem;
+    --m-text-lg: 1.125rem;    /* 18px: lead paragraphs */
+    --m-leading-lg: 1.625rem;
+    --m-text-xl: 1.375rem;    /* 22px: section titles */
+    --m-leading-xl: 1.75rem;
+    --m-tracking-xl: -0.005em;
+    --m-text-2xl: 1.75rem;    /* 28px: page titles (sans) */
+    --m-leading-2xl: 2.125rem;
+    --m-tracking-2xl: -0.01em;
+
+    /* Display sizes (serif, weight 400 only). */
+    --m-display-sm: 2rem;                                /* 32px */
+    --m-display-sm-leading: 1.125;
+    --m-display-sm-tracking: -0.01em;
+    --m-display-md: clamp(2.25rem, 1.8rem + 1.6vw, 2.75rem); /* 36 → 44px */
+    --m-display-md-leading: 1.08;
+    --m-display-md-tracking: -0.015em;
+    --m-display-lg: clamp(2.5rem, 1.6rem + 3.2vw, 4rem);     /* 40 → 64px */
+    --m-display-lg-leading: 1.04;
+    --m-display-lg-tracking: -0.02em;
+
+    --m-measure: 66ch; /* reading line length */
+
+    /* ── Spacing (4px base) ──────────────────────────────────────────── */
+    --m-space-0-5: 0.125rem; /* 2px: optical nudges only */
+    --m-space-1: 0.25rem;  /* 4 */
+    --m-space-2: 0.5rem;   /* 8 */
+    --m-space-3: 0.75rem;  /* 12 */
+    --m-space-4: 1rem;     /* 16 */
+    --m-space-5: 1.25rem;  /* 20 */
+    --m-space-6: 1.5rem;   /* 24 */
+    --m-space-8: 2rem;     /* 32 */
+    --m-space-10: 2.5rem;  /* 40 */
+    --m-space-12: 3rem;    /* 48 */
+    --m-space-16: 4rem;    /* 64 */
+    --m-space-24: 6rem;    /* 96 */
+
+    /* ── Layout ──────────────────────────────────────────────────────── */
+    --m-width-page: 80rem;  /* 1280px app container */
+    --m-gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem); /* 16 → 40px page side padding */
+
+    /* ── Shape ───────────────────────────────────────────────────────── */
+    --m-radius-sm: 4px;      /* checkboxes, tags, focus inside tables */
+    --m-radius-md: 6px;      /* buttons, inputs, selects */
+    --m-radius-lg: 10px;     /* panels, dialogs, menus */
+    --m-radius-round: 50%;   /* circular elements only: avatars, radios */
+    --m-border-width: 1px;
+    --m-rule-total: 3px double; /* double rule under grand totals */
+
+    /* ── Controls ────────────────────────────────────────────────────── */
+    --m-control-sm: 1.75rem; /* 28px: dense tables and toolbars */
+    --m-control-md: 2.25rem; /* 36px: default */
+    --m-control-lg: 2.75rem; /* 44px: touch and primary flows */
+
+    /* ── Elevation: only for layers that float over content ──────────── */
+    --m-shadow-overlay:
+      0 1px 2px color-mix(in srgb, #0a1526 6%, transparent),
+      0 8px 24px color-mix(in srgb, #0a1526 12%, transparent);
+
+    /* ── Motion: state changes only ──────────────────────────────────── */
+    --m-duration-fast: 120ms;  /* hover, press, focus */
+    --m-duration-base: 200ms;  /* open, close, expand */
+    --m-duration-slow: 320ms;  /* page-level transitions */
+    --m-ease-standard: cubic-bezier(0.25, 0.1, 0.3, 1);
+    --m-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+    /* ── Layers ──────────────────────────────────────────────────────── */
+    --m-z-sticky: 10;
+    --m-z-overlay: 100;
+    --m-z-toast: 200;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --m-shadow-overlay:
+      0 0 0 1px var(--m-color-border),
+      0 12px 32px color-mix(in srgb, #000000 50%, transparent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --m-shadow-overlay:
+        0 0 0 1px var(--m-color-border),
+        0 12px 32px color-mix(in srgb, #000000 50%, transparent);
+    }
+  }
+
+  @media (pointer: coarse) {
+    :root {
+      --m-control-sm: 2.25rem;
+      --m-control-md: 2.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --m-duration-fast: 0ms;
+      --m-duration-base: 0ms;
+      --m-duration-slow: 0ms;
+    }
+  }
+}

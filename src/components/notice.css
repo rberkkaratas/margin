@@ -1,0 +1,48 @@
+/*
+ * Inline notices.
+ *
+ * A plain bordered block; meaning is carried by the title text and a tinted
+ * surface, never by a colored stripe on one edge.
+ *
+ *   <div class="m-notice m-notice--warning" role="status">
+ *     <p class="m-notice__title">Terminal growth exceeds the discount rate</p>
+ *     <p>Lower the growth rate below 8.5% to get a finite value.</p>
+ *   </div>
+ */
+
+@layer margin.components {
+  .m-notice {
+    display: grid;
+    gap: var(--m-space-1);
+    padding: var(--m-space-3) var(--m-space-4);
+    border: var(--m-border-width) solid var(--m-color-border);
+    border-radius: var(--m-radius-lg);
+    background-color: var(--m-color-surface);
+    font-size: var(--m-text-md);
+    line-height: var(--m-leading-md);
+    color: var(--m-color-text-secondary);
+  }
+
+  .m-notice__title {
+    font-weight: var(--m-weight-semibold);
+    color: var(--m-color-text);
+  }
+
+  .m-notice--warning {
+    border-color: transparent;
+    background-color: var(--m-color-warning-tint);
+  }
+
+  .m-notice--warning .m-notice__title {
+    color: var(--m-color-warning);
+  }
+
+  .m-notice--error {
+    border-color: transparent;
+    background-color: var(--m-color-negative-tint);
+  }
+
+  .m-notice--error .m-notice__title {
+    color: var(--m-color-negative);
+  }
+}

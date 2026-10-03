@@ -1,0 +1,196 @@
+/*
+ * Financial tables.
+ *
+ * Monochrome, hairline rows, no zebra striping, no card around the table.
+ * Text columns align left, number columns align right, headers align with
+ * their data. Units are stated once in the caption or header.
+ *
+ *   .m-table                      base table
+ *   .m-table--compact             13px dense variant
+ *   .m-table--grid                every cell ruled (sensitivity tables)
+ *   .m-table__num                 numeric cell (th or td)
+ *   .m-table__divide              rule between historical and projected columns
+ *   .m-table__section             row that names a block of rows
+ *   .m-table__indent              child row label
+ *   .m-table__subtotal            rule above, semibold
+ *   .m-table__total               rule above, double rule below, semibold
+ *   .m-table__base                the base case cell of a sensitivity grid
+ *   .m-table__input               an <input> that edits a cell in place
+ *   .m-table-scroll               wrapper: horizontal scroll, sticky first column
+ */
+
+@layer margin.components {
+  .m-table-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .m-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--m-text-md);
+    line-height: var(--m-leading-md);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .m-table caption {
+    padding-block-end: var(--m-space-3);
+    text-align: start;
+    font-size: var(--m-text-sm);
+    line-height: var(--m-leading-sm);
+    color: var(--m-color-text-tertiary);
+    caption-side: top;
+  }
+
+  .m-table th,
+  .m-table td {
+    padding: var(--m-space-2) var(--m-space-3);
+    border-bottom: var(--m-border-width) solid var(--m-color-border-subtle);
+    text-align: start;
+    vertical-align: baseline;
+  }
+
+  .m-table th:first-child,
+  .m-table td:first-child {
+    padding-inline-start: 0;
+  }
+
+  .m-table th:last-child,
+  .m-table td:last-child {
+    padding-inline-end: 0;
+  }
+
+  .m-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: var(--m-z-sticky);
+    border-bottom-color: var(--m-color-border-strong);
+    background-color: var(--m-color-canvas);
+    color: var(--m-color-text-secondary);
+    font-size: var(--m-text-sm);
+    line-height: var(--m-leading-sm);
+    font-weight: var(--m-weight-medium);
+    vertical-align: bottom;
+  }
+
+  .m-table tbody th {
+    font-weight: var(--m-weight-regular);
+  }
+
+  .m-table tbody tr:hover > * {
+    background-color: var(--m-color-surface-sunken);
+  }
+
+  .m-table .m-table__num {
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  .m-table__divide {
+    border-inline-start: var(--m-border-width) solid var(--m-color-border);
+  }
+
+  .m-table__section > * {
+    padding-block-start: var(--m-space-5);
+    border-bottom-color: var(--m-color-border);
+    font-weight: var(--m-weight-semibold);
+  }
+
+  .m-table tbody tr.m-table__section:hover > * {
+    background-color: transparent;
+  }
+
+  .m-table tr > .m-table__indent {
+    padding-inline-start: var(--m-space-4);
+  }
+
+  .m-table__subtotal > * {
+    border-top: var(--m-border-width) solid var(--m-color-border-strong);
+    font-weight: var(--m-weight-semibold);
+  }
+
+  .m-table tbody .m-table__subtotal th,
+  .m-table tbody .m-table__total th {
+    font-weight: var(--m-weight-semibold);
+  }
+
+  .m-table__total > * {
+    border-top: var(--m-border-width) solid var(--m-color-border-strong);
+    border-bottom: var(--m-rule-total) var(--m-color-text);
+    font-weight: var(--m-weight-semibold);
+  }
+
+  /* Sensitivity grids: every cell ruled, base case outlined. */
+  .m-table.m-table--grid th,
+  .m-table.m-table--grid td {
+    padding-inline: var(--m-space-3);
+    border: var(--m-border-width) solid var(--m-color-border-subtle);
+    border-width: 0 var(--m-border-width) var(--m-border-width) 0;
+  }
+
+  .m-table--grid tr > :first-child {
+    border-inline-start-width: var(--m-border-width);
+  }
+
+  .m-table--grid thead tr:first-child > * {
+    border-top-width: var(--m-border-width);
+  }
+
+  .m-table--grid tbody tr:hover > * {
+    background-color: transparent;
+  }
+
+  .m-table__base {
+    outline: 2px solid var(--m-color-text);
+    outline-offset: -2px;
+    font-weight: var(--m-weight-semibold);
+  }
+
+  /* Edit in place: looks like text until hovered or focused. */
+  .m-table__input {
+    width: 100%;
+    min-width: 5ch;
+    min-height: var(--m-control-sm);
+    margin-block: calc(var(--m-space-1) * -1);
+    padding-inline: var(--m-space-1);
+    border: var(--m-border-width) solid transparent;
+    border-radius: var(--m-radius-sm);
+    background-color: transparent;
+    color: var(--m-color-accent);
+    text-align: end;
+    font-variant-numeric: lining-nums tabular-nums;
+    transition: border-color var(--m-duration-fast) var(--m-ease-standard);
+  }
+
+  .m-table__input:hover {
+    border-color: var(--m-color-border-control);
+  }
+
+  .m-table__input:focus-visible {
+    border-color: var(--m-color-focus);
+    background-color: var(--m-color-surface);
+    outline-offset: 0;
+  }
+
+  .m-table--compact {
+    font-size: var(--m-text-sm);
+    line-height: var(--m-leading-sm);
+  }
+
+  .m-table--compact th,
+  .m-table--compact td {
+    padding-block: var(--m-space-1);
+  }
+
+  /* First column stays visible while wide tables scroll sideways. */
+  .m-table-scroll .m-table tr > :first-child {
+    position: sticky;
+    left: 0;
+    background-color: var(--m-color-canvas);
+  }
+
+  .m-table-scroll .m-table thead tr > :first-child {
+    z-index: calc(var(--m-z-sticky) + 1);
+  }
+}

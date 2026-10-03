@@ -1,0 +1,63 @@
+/*
+ * Segmented control: one choice out of two to five, all visible.
+ * Built on native radio inputs so keyboard and screen readers work as-is.
+ *
+ *   <fieldset class="m-segmented">
+ *     <legend class="m-visually-hidden">Scenario</legend>
+ *     <label><input type="radio" name="s" value="bear"> Bear</label>
+ *     <label><input type="radio" name="s" value="base" checked> Base</label>
+ *     <label><input type="radio" name="s" value="bull"> Bull</label>
+ *   </fieldset>
+ */
+
+@layer margin.components {
+  .m-segmented {
+    display: inline-flex;
+    gap: var(--m-space-0-5);
+    min-width: 0;
+    padding: var(--m-space-0-5);
+    border: var(--m-border-width) solid var(--m-color-border);
+    border-radius: var(--m-radius-md);
+    background-color: var(--m-color-surface-sunken);
+  }
+
+  .m-segmented label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: calc(var(--m-control-md) - var(--m-space-1) - 2px);
+    padding-inline: var(--m-space-3);
+    border: var(--m-border-width) solid transparent;
+    border-radius: var(--m-radius-sm);
+    color: var(--m-color-text-secondary);
+    font-size: var(--m-text-md);
+    line-height: var(--m-leading-md);
+    font-weight: var(--m-weight-medium);
+    cursor: pointer;
+    transition:
+      background-color var(--m-duration-fast) var(--m-ease-standard),
+      color var(--m-duration-fast) var(--m-ease-standard);
+  }
+
+  .m-segmented label:hover {
+    color: var(--m-color-text);
+  }
+
+  .m-segmented input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .m-segmented label:has(input:checked) {
+    border-color: var(--m-color-border);
+    background-color: var(--m-color-surface);
+    color: var(--m-color-text);
+  }
+
+  .m-segmented label:has(input:focus-visible) {
+    outline: 2px solid var(--m-color-focus);
+    outline-offset: 1px;
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@rberkkaratas/margin",
+  "version": "0.1.0",
+  "description": "Margin: the shared design kit for a family of finance apps. Plain CSS, two themes, strict rules.",
+  "license": "MIT",
+  "author": "R. Berk Karatas",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rberkkaratas/margin.git"
+  },
+  "keywords": ["design-system", "css", "finance", "design-tokens"],
+  "type": "module",
+  "style": "./src/margin.css",
+  "exports": {
+    ".": "./src/margin.css",
+    "./tokens.css": "./src/tokens.css",
+    "./fonts.css": "./src/fonts.css",
+    "./base.css": "./src/base.css",
+    "./components/*": "./src/components/*",
+    "./fonts/*": "./src/fonts/*",
+    "./stylelint": "./stylelint/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "stylelint",
+    "scripts/check-copy.js",
+    "DESIGN.md"
+  ],
+  "bin": {
+    "margin-check-copy": "./scripts/check-copy.js"
+  },
+  "sideEffects": ["*.css"],
+  "scripts": {
+    "lint": "stylelint \"src/**/*.css\" \"specimen/**/*.css\"",
+    "check:contrast": "node scripts/check-contrast.js",
+    "check:copy": "node scripts/check-copy.js specimen/index.html README.md",
+    "check": "npm run lint && npm run check:contrast && npm run check:copy",
+    "specimen": "open specimen/index.html"
+  },
+  "peerDependencies": {
+    "stylelint": ">=16"
+  },
+  "peerDependenciesMeta": {
+    "stylelint": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "stylelint": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
